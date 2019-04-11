@@ -1,0 +1,47 @@
+<html>
+<body>
+<pre>
+# Mail addressed explicitly to the domain gateway (us)
+R$*&lt;@LOCAL&gt;             $@$&gt;30$1               strip our name, retry
+R&lt;@LOCAL&gt;:$+            $@$&gt;30$1               retry after route strip
+
+# For numeric spec, you can't pass spec on to receiver, since old rcvr's
+# are not smart enough to know that [x.y.z.a] is their own name.
+R&lt;@[$+]&gt;:$*             $:$&gt;9 &lt;@[$1]&gt;:$2       Clean it up, then...
+R&lt;@[$+]&gt;:$*             $#ether $@[$1] $:$2    numeric internet spec
+R&lt;@[$+]&gt;,$*             $#ether $@[$1] $:$2    numeric internet spec
+R$*&lt;@[$+]&gt;              $#ether $@[$2] $:$1    numeric internet spec
+
+# deliver to known ethernet hosts explicitly specified in our domain
+R$*&lt;@$%y.LOCAL&gt;$*       $#ether $@$2 $:$1&lt;@$2&gt;$3      user@host.sun.com
+# deliver to hosts in our domain that have an MX record
+R$*&lt;@$%x.LOCAL&gt;$*       $#ether $@$2 $:$1&lt;@$2&gt;$3      user@host.sun.com
+
+# etherhost.uucp is treated as etherhost.$m for now.
+# This allows them to be addressed from uucp as foo!sun!etherhost!user.
+R$*&lt;@$%y.uucp&gt;$*        $#ether $@$2 $:$1&lt;@$2&gt;$3      user@etherhost.uucp
+
+# Explicitly specified names in our domain -- that we've never heard of
+R$*&lt;@$*.LOCAL&gt;$*        $#error $:Never heard of host $2 in domain $m
+
+# Clean up addresses for external use -- kills LOCAL, route-addr ,=&gt;: 
+R$*                     $:$&gt;9 $1               Then continue...
+
+# resolve UUCP-style names
+R&lt;@$-.uucp&gt;:$+          $#uucp  $@$1 $:$2      @host.uucp:...
+R$+&lt;@$-.uucp&gt;           $#uucp  $@$2 $:$1      user@host.uucp
+
+# Pass other valid names up the ladder to our forwarder
+#R$*&lt;@$*.$=T&gt;$*         $#$M    $@$R $:$1&lt;@$2.$3&gt;$4    user@domain.known
+
+# Replace following with above to only forward "known" top-level domains
+R$*&lt;@$*.$+&gt;$*           $#$M    $@$R $:$1&lt;@$2.$3&gt;$4    user@any.domain
+
+# if you are on the DDN, then comment-out both of the lines above
+# and use the following instead:
+#R$*&lt;@$*.$+&gt;$*          $#ddn $@ $2.$3 $:$1&lt;@$2.$3&gt;$4  user@any.domain
+</pre>
+<a href=yes_or_no.html#charming>Take me back to Alice and Bob</a>
+
+</body>
+</html>
