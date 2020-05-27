@@ -1,0 +1,20 @@
+body
+{
+    font-family: 'Helvetica', sans-serif;
+		padding-left: 250px;
+		font-size: large;
+		background-color:#F5F5DC;
+		width:500;
+}
+
+.notes {
+		font-size: medium;
+}
+
+.comic {
+    padding-left: 0px;
+    width:900;
+    text-align:left;
+    border:4px solid black;
+}
+
