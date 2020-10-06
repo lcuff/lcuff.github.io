@@ -1,0 +1,12 @@
+To update my page at trust-in-god ... etc etc...
+
+write changes to index.html
+
+do 
+
+    git add index.html
+    git commit
+    git push
+
+
+ That's it! 
