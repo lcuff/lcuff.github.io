@@ -1,5 +1,16 @@
+<html> 
+  <meta charset="utf-8">
+
+  <head> 
+    <script src="jquery.js"></script> 
+    <script> 
+    $(function(){
+      $("#includedContent").load("b.html"); 
+    });
+    </script> 
+  </head> 
+
 <HTML>
-    <meta charset="utf-8">
     <head>
 	<link rel="stylesheet" type="text/css" href="style_main.css">
 	<title>
@@ -9,18 +20,12 @@
 
     <body>
 
+     <div id="includedContent"></div>
+
 	<h1>Leonard Cuff Opines</h1>
 	<hr>
 
-	<script>
-	    debugger();
-	    console.log("Here we go");
-	    var audio = new Audio('/1A.m4a');
-	    console.log(audio);
-	    audio.play();
-	    var audio2 = new Audio('1A.m4a');
-	    audio2.play();
-	</script>
+	<a name="SeekQuality"></a>
 
 	<h2> Seek Quality</H2>
 	<H3> 2021-01-12</H3>
@@ -63,6 +68,7 @@
 	<br>
 	<br>
 	<br>
+	<a name="HowMany"></a>
 	<br>
 
 	<h2> How many answers are there to a yes or no question?</h2>
