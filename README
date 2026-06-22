@@ -7,6 +7,8 @@ do
     git add index.html
     git commit
     git push
+    user  lcuff
+    password bb76a5456a68c087bd06598dc24f2e27995a0ceb
 
 
  That's it! 
