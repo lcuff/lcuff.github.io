@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="robots" content="noindex">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="referrer" content="no-referrer">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Status</title>
   <style>
@@ -63,8 +64,60 @@ Odds of a &#39;no&#39; on next request: 22% which is 11 in 50
 
 Last permission granted: August 2, 2026 at 5:46 PM</pre>
     <div class="updated">
-      Generated at August 5, 2026 at 8:54 PM
+      Generated at August 6, 2026 at 3:16 PM
     </div>
   </div>
+  <script>
+  (() => {
+    let fragment;
+
+    try {
+      fragment = decodeURIComponent(
+        window.location.hash.slice(1)
+      );
+    } catch (_) {
+      return;
+    }
+
+    if (!fragment) return;
+
+    const notificationKey =
+      "scarlet-private-bookmark-alerted-v1";
+
+    try {
+      if (sessionStorage.getItem(notificationKey)) return;
+      sessionStorage.setItem(notificationKey, "1");
+    } catch (_) {
+      // Continue if sessionStorage is unavailable.
+    }
+
+    fetch("https://scarlet-private-bookmark-alert.lcuff-scarlet.workers.dev/visit", {
+      method: "POST",
+      mode: "cors",
+      credentials: "omit",
+      referrerPolicy: "no-referrer",
+      keepalive: true,
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        secret: fragment
+      })
+    }).then((response) => {
+      if (!response.ok) {
+        try {
+          sessionStorage.removeItem(notificationKey);
+        } catch (_) {
+        }
+      }
+    }).catch(() => {
+      try {
+        sessionStorage.removeItem(notificationKey);
+      } catch (_) {
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>
