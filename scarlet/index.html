@@ -103,14 +103,37 @@
       font-weight: 700;
     }
 
-    .activity-grid {
+    .activity-groups {
       display: grid;
-      grid-template-columns: max-content 1fr;
-      gap: 8px 14px;
+      gap: 14px;
+    }
+
+    .outcome-group {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .outcome-group-title {
+      color: #d9c4cb;
+      font-weight: 700;
+    }
+
+    .outcome-lines {
+      display: grid;
+      gap: 5px;
+      padding-left: 12px;
+    }
+
+    .outcome-line {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 10px;
       align-items: baseline;
     }
 
-    .activity-label,
+    .outcome-label,
     .demerit-label {
       color: #d9c4cb;
       font-weight: 700;
@@ -191,13 +214,17 @@
         padding-top: 25px;
       }
 
-      .activity-grid {
+      .outcome-group {
         grid-template-columns: 1fr;
-        gap: 2px;
+        gap: 4px;
       }
 
-      .activity-value {
-        margin-bottom: 7px;
+      .outcome-lines {
+        padding-left: 18px;
+      }
+
+      .outcome-line {
+        grid-template-columns: minmax(120px, max-content) 1fr;
       }
 
       .demerit-row {
@@ -227,35 +254,58 @@
 
   <section class="card">
     <h2>Recent activity</h2>
-    <div class="activity-grid">
-      <div class="activity-label">Last home cum:</div>
-      <div class="activity-value">Mon, Aug 31st</div>
+    <div class="activity-groups">
+      <div class="outcome-group">
+  <div class="outcome-group-title">Home:</div>
+  <div class="outcome-lines">
+    <div class="outcome-line">
+  <span class="outcome-label">cum:</span>
+  <span class="outcome-value">Mon, Aug 31st</span>
+</div>
+<div class="outcome-line">
+  <span class="outcome-label">Previous denial:</span>
+  <span class="outcome-value">Thurs, Aug 13th</span>
+</div>
 
-      <div class="activity-label">Last live cum:</div>
-      <div class="activity-value">Tues, Sept 1st</div>
+  </div>
+</div>
 
-      <div class="activity-label">Last live session:</div>
-      <div class="activity-value">cum: denied - Tues, Sept 1st</div>
+      <div class="outcome-group">
+  <div class="outcome-group-title">Live:</div>
+  <div class="outcome-lines">
+    <div class="outcome-line">
+  <span class="outcome-label">Denial:</span>
+  <span class="outcome-value">Tues, Sept 1st</span>
+</div>
+<div class="outcome-line">
+  <span class="outcome-label">Previous cum:</span>
+  <span class="outcome-value">Tues, Sept 1st</span>
+</div>
 
-      <div class="activity-label">Last home session:</div>
-      <div class="activity-value">cum: allowed - Mon, Aug 31st</div>
+  </div>
+</div>
+
     </div>
   </section>
 
   <section class="card">
     <h2>Recent Demerits</h2>
+    <div class="demerit-row">
+  <div class="demerit-label">Live:</div>
+  <div class="demerit-summary">6 - Tues, Sept 1st</div>
+  <button class="breakdown-button" type="button"
+        data-dialog="live-breakdown">Type breakdown</button>
+
+</div>
 
     <div class="demerit-row">
-      <div class="demerit-label">Live:</div>
-      <div class="demerit-summary">6 - Tues, Sept 1st</div>
-      <button class="breakdown-button" type="button" data-dialog="live-breakdown">Type breakdown</button>
-    </div>
+  <div class="demerit-label">Home:</div>
+  <div class="demerit-summary">21 - Thurs, Aug 20th</div>
+  <button class="breakdown-button" type="button"
+        data-dialog="home-breakdown">Type breakdown</button>
 
-    <div class="demerit-row">
-      <div class="demerit-label">Home:</div>
-      <div class="demerit-summary">0 - Sun, Aug 30th</div>
-      <button class="breakdown-button" type="button" data-dialog="home-breakdown">Type breakdown</button>
-    </div>
+</div>
+
   </section>
 
   <dialog id="live-breakdown" class="breakdown-dialog">
@@ -274,8 +324,19 @@
 </dialog>
 
   <dialog id="home-breakdown" class="breakdown-dialog">
-  <h3>Home audio demerit type breakdown</h3>
-  <p class="none-recorded">No demerits recorded.</p>
+  <h3>Home demerit type breakdown</h3>
+  <div class="breakdown-grid">
+  <div class="breakdown-type">Disobedient</div>
+<div class="breakdown-count">5</div>
+<div class="breakdown-type">Incorrect grip</div>
+<div class="breakdown-count">8</div>
+<div class="breakdown-type">Unprepared</div>
+<div class="breakdown-count">4</div>
+<div class="breakdown-type">unspecified</div>
+<div class="breakdown-count">4</div>
+
+</div>
+
   <form method="dialog">
     <button class="close-button">Close</button>
   </form>
@@ -283,7 +344,7 @@
 
 
   <div class="updated">
-    Generated Tues, Sept 1st 1:25 PM PDT
+    Generated Tues, Sept 1st 1:41 PM PDT
   </div>
 
   <script>
