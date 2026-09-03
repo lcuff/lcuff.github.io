@@ -160,6 +160,11 @@
       font-size: 0.88rem;
     }
 
+    .breakdown-button:disabled {
+      opacity: 0.42;
+      cursor: default;
+    }
+
     .breakdown-dialog {
       width: min(430px, calc(100vw - 44px));
       border: 1px solid #704455;
@@ -259,8 +264,7 @@
   <span class="outcome-label">Most recent cum:</span>
   <span class="outcome-value">Mon, Aug 31st</span>
   <span class="outcome-demerit-cell"><span class="activity-demerits">Demerits: 0</span>
-<button class="breakdown-button" type="button"
-        data-dialog="home-activity-0-details">Details</button>
+<button class="breakdown-button" type="button" disabled>Details</button>
 </span>
 </div>
 <div class="outcome-line">
@@ -289,7 +293,9 @@
 <div class="outcome-line">
   <span class="outcome-label">Previous denial:</span>
   <span class="outcome-value">&lt;never&gt;</span>
-  <span class="outcome-demerit-cell"><span class="activity-demerits">Demerits: —</span></span>
+  <span class="outcome-demerit-cell"><span class="activity-demerits">Demerits: 0</span>
+<button class="breakdown-button" type="button" disabled>Details</button>
+</span>
 </div>
 
   </div>
@@ -298,14 +304,7 @@
     </div>
   </section>
 
-  <dialog id="home-activity-0-details" class="breakdown-dialog">
-  <h3>Home demerit details — Mon, Aug 31st</h3>
-  <p class="none-recorded">No demerits recorded.</p>
-  <form method="dialog">
-    <button class="close-button">Close</button>
-  </form>
-</dialog>
-<dialog id="home-activity-1-details" class="breakdown-dialog">
+  <dialog id="home-activity-1-details" class="breakdown-dialog">
   <h3>Home demerit details — Fri, Aug 14th</h3>
   <div class="breakdown-grid">
   <div class="breakdown-type">Disobedient</div>
@@ -337,7 +336,7 @@
 
 
   <div class="updated">
-    Generated Thurs, Sept 3rd 11:26 AM PDT
+    Generated Thurs, Sept 3rd 11:41 AM PDT
   </div>
 
   <script>
