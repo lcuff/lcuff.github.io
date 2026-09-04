@@ -103,6 +103,11 @@
       font-weight: 700;
     }
 
+    .yeses-line {
+      margin-top: 6px;
+      color: #d9c4cb;
+    }
+
     .activity-groups {
       display: grid;
       gap: 14px;
@@ -244,14 +249,18 @@
   <section class="card title-card">
     <div class="mode">TEST MODE</div>
     <h1>The Ledger of Obedience</h1>
-    
+    <a class="seize-control" href="https://scarlet-live-control.lcuff-scarlet.workers.dev/seize/test">Seize Control</a>
+
   </section>
 
   <section class="card">
     <div class="status-line">
       <span class="status-label">Current Status:</span>
       <strong id="currentStatusValue"
-              data-static-status="Permitted upon request">Permitted upon request</strong>
+              data-static-status="May ask for permission">May ask for permission</strong>
+    </div>
+    <div class="yeses-line">
+      Consecutive yeses: <strong>1</strong>
     </div>
   </section>
 
@@ -352,7 +361,7 @@
 
 
   <div class="updated">
-    Generated Fri, Sept 4th 4:14 AM PDT
+    Generated Fri, Sept 4th 4:15 AM PDT
   </div>
 
   <script>
@@ -389,7 +398,7 @@
           if (data.active_session && data.permission_result === "denied") {
             statusElement.textContent = "Permission Denied";
           } else if (data.active_session && data.permission_result === "granted") {
-            statusElement.textContent = "Permitted upon request";
+            statusElement.textContent = "May ask for permission";
           } else {
             statusElement.textContent = staticStatus;
           }
