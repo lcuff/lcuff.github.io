@@ -244,13 +244,15 @@
   <section class="card title-card">
     <div class="mode">TEST MODE</div>
     <h1>The Ledger of Obedience</h1>
-    
+    <a class="seize-control" href="https://scarlet-live-control.lcuff-scarlet.workers.dev/seize/test">Seize Control</a>
+
   </section>
 
   <section class="card">
     <div class="status-line">
       <span class="status-label">Current Status:</span>
-      <strong>Permitted upon request</strong>
+      <strong id="currentStatusValue"
+              data-static-status="Permitted upon request">Permitted upon request</strong>
     </div>
   </section>
 
@@ -338,7 +340,7 @@
 
 
   <div class="updated">
-    Generated Thurs, Sept 3rd 8:45 PM PDT
+    Generated Thurs, Sept 3rd 8:46 PM PDT
   </div>
 
   <script>
@@ -350,6 +352,44 @@
         }
       });
     });
+
+    (() => {
+      const statusElement = document.getElementById("currentStatusValue");
+      const workerBaseUrl = "https://scarlet-live-control.lcuff-scarlet.workers.dev";
+      const statusMode = "test";
+      if (!statusElement || !workerBaseUrl) return;
+
+      const staticStatus = statusElement.dataset.staticStatus;
+      const endpoint =
+        workerBaseUrl + "/api/live-permission?mode=" + encodeURIComponent(statusMode);
+
+      async function refreshLivePermissionStatus() {
+        try {
+          const response = await fetch(endpoint, {
+            cache: "no-store",
+            credentials: "omit"
+          });
+          if (!response.ok) return;
+
+          const data = await response.json();
+          if (data.mode !== statusMode) return;
+
+          if (data.active_session && data.permission_result === "denied") {
+            statusElement.textContent = "Permission Denied";
+          } else if (data.active_session && data.permission_result === "granted") {
+            statusElement.textContent = "Permitted upon request";
+          } else {
+            statusElement.textContent = staticStatus;
+          }
+        } catch (_) {
+          // The static status remains authoritative if the Worker is unreachable.
+        }
+      }
+
+      refreshLivePermissionStatus();
+      window.addEventListener("pageshow", refreshLivePermissionStatus);
+      window.addEventListener("focus", refreshLivePermissionStatus);
+    })();
   </script>
 </body>
 </html>
