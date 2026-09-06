@@ -281,15 +281,14 @@
   <section class="card title-card">
     <div class="mode">TEST MODE</div>
     <h1>The Ledger of Obedience</h1>
-    <a class="seize-control" href="https://scarlet-live-control.lcuff-scarlet.workers.dev/seize/test">Seize Control</a>
-
+    
   </section>
 
   <section class="card">
     <div class="status-line">
       <span class="status-label">Current Status:</span>
       <strong id="currentStatusValue"
-              data-static-status="May ask for permission">May ask for permission</strong>
+              data-static-status="Permission Denied">Permission Denied</strong>
     </div>
     <div class="yeses-line">
       Consecutive yeses: <strong>1</strong>
@@ -302,14 +301,14 @@
       </div>
       <div class="odds-row">
         <span>At least (considering demerits):</span>
-        <strong>17% (about 1 in 5)</strong>
+        <strong>24% (about 1 in 4)</strong>
       </div>
     </div>
     <div class="demerit-summary-block">
       <div class="demerit-summary-title">Demerits:</div>
       <div class="demerit-summary-row">
         <span>Outstanding:</span>
-        <strong>32</strong>
+        <strong>50</strong>
       </div>
       <div class="demerit-summary-row">
         <span>Current session:</span>
@@ -347,18 +346,19 @@
   <div class="outcome-group-title">Live:</div>
   <div class="outcome-lines">
     <div class="outcome-line">
-  <span class="outcome-label">Most recent cum:</span>
-  <span class="outcome-value">Sun, Aug 16th</span>
-  <span class="outcome-demerit-cell"><span class="activity-demerits">Demerits: 2</span>
+  <span class="outcome-label">Most recent denial:</span>
+  <span class="outcome-value">Sun, Sept 6th</span>
+  <span class="outcome-demerit-cell"><span class="activity-demerits">Demerits: 18</span>
 <button class="breakdown-button" type="button"
         data-dialog="live-activity-0-details">Details</button>
 </span>
 </div>
 <div class="outcome-line">
-  <span class="outcome-label">Previous denial:</span>
-  <span class="outcome-value">&lt;never&gt;</span>
-  <span class="outcome-demerit-cell"><span class="activity-demerits">Demerits: 0</span>
-<button class="breakdown-button" type="button" disabled>Details</button>
+  <span class="outcome-label">Previous cum:</span>
+  <span class="outcome-value">Sun, Aug 16th</span>
+  <span class="outcome-demerit-cell"><span class="activity-demerits">Demerits: 2</span>
+<button class="breakdown-button" type="button"
+        data-dialog="live-activity-1-details">Details</button>
 </span>
 </div>
 
@@ -386,6 +386,24 @@
 </dialog>
 
   <dialog id="live-activity-0-details" class="breakdown-dialog">
+  <h3>Live demerit details — Sun, Sept 6th</h3>
+  <div class="breakdown-grid">
+  <div class="breakdown-type">Disobedient</div>
+<div class="breakdown-count">1</div>
+<div class="breakdown-type">not enough pleasure</div>
+<div class="breakdown-count">1</div>
+<div class="breakdown-type">Scarlet&#39;s Pleasure</div>
+<div class="breakdown-count">11</div>
+<div class="breakdown-type">Slow to comply</div>
+<div class="breakdown-count">5</div>
+
+</div>
+
+  <form method="dialog">
+    <button class="close-button">Close</button>
+  </form>
+</dialog>
+<dialog id="live-activity-1-details" class="breakdown-dialog">
   <h3>Live demerit details — Sun, Aug 16th</h3>
   <div class="breakdown-grid">
   <div class="breakdown-type">Scarlet&#39;s Pleasure</div>
@@ -400,7 +418,7 @@
 
 
   <div class="updated">
-    Generated Sun, Sept 6th 9:03 AM PDT
+    Generated Sun, Sept 6th 10:02 AM PDT
   </div>
 
   <script>
@@ -451,6 +469,6 @@
       window.addEventListener("focus", refreshLivePermissionStatus);
     })();
   </script>
-    <!-- audio-fun-publication:14de0122f1006c9901afa04ddcaa877d22e791b5459dbfa206550f067e007440 -->
+    <!-- audio-fun-publication:a9dfe2887d5ffd8ff45395e7704460154917391302fba29b435a2a91e46108eb -->
   </body>
 </html>
